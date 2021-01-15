@@ -2,5 +2,10 @@
 
 Modules Represented within this repo:
 - More places to stay
-- Things to do nearby
-- Location
+
+
+**Server Commands**
+`npm start`
+
+Database Seeding
+`npm run seed`
