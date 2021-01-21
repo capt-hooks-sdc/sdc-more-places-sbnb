@@ -7,7 +7,7 @@ const app = express();
 app.use(express.static(__dirname + '/../client/public'));
 
 app.get('/api/places', (req, res) => {
-  db.query(`SELECT * FROM places`, (err, result) => {
+  db.query(`SELECT * FROM places LIMIT 12`, (err, result) => {
     if (err) {
       console.log(err);
     } else {
