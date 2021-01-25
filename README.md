@@ -3,9 +3,13 @@
 Modules Represented within this repo:
 - More places to stay
 
+Install
+- Client and Server are seperate NPM Packages
+- CD into both and `npm install`
 
 **Server Commands**
-`npm start`
+Run Node - `npm start`
+Run Nodemon - `npm run dev`
 
 Database Seeding
 `npm run seed`
