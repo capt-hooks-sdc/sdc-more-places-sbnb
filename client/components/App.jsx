@@ -17,7 +17,9 @@ class App extends React.Component {
     }
     this.design = {
       fontFamily: 'Montserrat',
-      maxWidth: '1280px'
+      maxWidth: '1128px',
+      width: '100%',
+      backgroundColor: 'rgb(247, 247, 247)'
     }
     this.headerStyle = {
       display: 'flex',
@@ -33,7 +35,9 @@ class App extends React.Component {
       justifyContent: 'space-between'
     }
     this.listStyle = {
-      width: '250px'
+      width: '250px',
+      marginTop: '-5px',
+      marginBottom: '-5px'
     }
 
     this.previousSlide = this.previousSlide.bind(this);
@@ -45,7 +49,7 @@ class App extends React.Component {
   }
 
   getListings() {
-    axios.get('http://localhost:3000/api/places')
+    axios.get('http://localhost:3003/api/places')
       .then((res) => {
         this.setState({
           ...this.state,

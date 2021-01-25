@@ -4,7 +4,8 @@ const db = require('./db/index');
 
 const app = express();
 
-app.use(express.static(__dirname + '/../client/public'));
+app.use('/', express.static(__dirname + '/../client/public'));
+app.use('/bundle', express.static(__dirname + '/../client/public/bundle.js'));
 
 app.get('/api/places', (req, res) => {
   db.query(`SELECT * FROM places LIMIT 12`, (err, result) => {
@@ -16,7 +17,7 @@ app.get('/api/places', (req, res) => {
   })
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
