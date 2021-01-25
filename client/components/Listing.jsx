@@ -12,7 +12,10 @@ class Listing extends React.Component {
       fontWeight: 900
     }
     this.noRevStyle = {
-      fontWeight: 100
+      margin: '2px'
+    }
+    this.startColor = {
+      color: '#FF385C'
     }
   }
 
@@ -26,17 +29,17 @@ class Listing extends React.Component {
           {
             (this.props.listing.revnum === 0) ?
               <p style={this.noRevStyle}>No reviews yet</p> :
-              <p>{this.props.listing.revnum}({this.props.listing.revamount})</p>
+              <p style={this.noRevStyle}><span style={this.startColor}>&#x2605; </span>{this.props.listing.revnum}({this.props.listing.revamount})</p>
           }
         </div>
         <div id='roomContainer'>
-          <p>{this.props.listing.roomtype} - {this.props.listing.numbeds} beds</p>
+          <p style={this.noRevStyle}>{this.props.listing.roomtype} - {this.props.listing.numbeds} beds</p>
         </div>
         <div id='descContainer'>
-          <p>{this.props.listing.description}</p>
+          <p style={this.noRevStyle}>{this.props.listing.description}</p>
         </div>
         <div id='priceContainer'>
-          <p><span style={this.priceStyle}>${this.props.listing.price}</span> / night</p>
+          <p style={this.noRevStyle}><span style={this.priceStyle}>${this.props.listing.price}</span> / night</p>
         </div>
       </div>
     )

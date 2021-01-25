@@ -4,6 +4,11 @@ const db = require('./index');
 
 db.query(`USE placesToStay;`);
 
+
+// Real data
+const listType = ['Barn', 'Entire guesthouse', 'Entire apartment', 'Entire condominium'];
+
+
 //  add data
 for (let i = 0; i < 150; i++) {
 
