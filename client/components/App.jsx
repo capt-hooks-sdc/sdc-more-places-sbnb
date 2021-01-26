@@ -19,7 +19,9 @@ class App extends React.Component {
       fontFamily: 'Montserrat',
       maxWidth: '1128px',
       width: '100%',
-      backgroundColor: 'rgb(247, 247, 247)'
+      backgroundColor: 'rgb(247, 247, 247)',
+      marginLeft: 'auto',
+      marginRight: 'auto'
     }
     this.headerStyle = {
       display: 'flex',
