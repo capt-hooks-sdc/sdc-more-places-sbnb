@@ -9,6 +9,7 @@ const user = process.env.DB_USER;
 const pass = process.env.DB_PASS;
 
 const connection = mysql.createConnection({
+  host: 'localhost',
   user: user,
   password: pass
 });
