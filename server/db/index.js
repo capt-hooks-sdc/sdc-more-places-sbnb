@@ -1,12 +1,16 @@
 const mysql = require('mysql');
 const createTables = require('./config');
 const Promise = require('bluebird');
+require('dotenv').config();
 
 const database = 'placesToStay';
 
+const user = process.env.DB_USER;
+const pass = process.env.DB_PASS;
+
 const connection = mysql.createConnection({
-  user: process.env.dbUser,
-  password: process.env.dbPass
+  user: user,
+  password: pass
 });
 
 const db = Promise.promisifyAll(connection, { multiArgs: true });
