@@ -5,8 +5,8 @@ const Promise = require('bluebird');
 const database = 'placesToStay';
 
 const connection = mysql.createConnection({
-  user: 'admin',
-  password: 'airbnbcloneadmin'
+  user: process.env.dbUser,
+  password: process.env.dbPass
 });
 
 const db = Promise.promisifyAll(connection, { multiArgs: true });
