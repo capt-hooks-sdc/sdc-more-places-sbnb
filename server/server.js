@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./db/index');
 const cors = require('cors');
+const compression = require('compression');
 
 const app = express();
 
+app.use(compression());
 app.use(cors({origin: 'http://54.157.193.11:8000/'}));
 app.use('/', cors(), express.static(__dirname + '/../client/public'));
 app.use('/bundle', cors(), express.static(__dirname + '/../client/public/bundle.js'));
