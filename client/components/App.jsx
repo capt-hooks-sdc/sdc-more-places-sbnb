@@ -51,7 +51,7 @@ class App extends React.Component {
   }
 
   getListings() {
-    axios.get('http://localhost:3003/api/places')
+    axios.get('http://18.221.87.209:3003/api/places')
       .then((res) => {
         this.setState({
           ...this.state,
