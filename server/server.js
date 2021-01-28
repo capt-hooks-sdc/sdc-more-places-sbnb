@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors({origin: 'http://localhost:8000'}));
+app.use(cors({origin: 'http://54.157.193.11:8000/'}));
 app.use('/', cors(), express.static(__dirname + '/../client/public'));
 app.use('/bundle', cors(), express.static(__dirname + '/../client/public/bundle.js'));
 
