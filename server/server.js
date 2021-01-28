@@ -5,11 +5,11 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors({origin: 'http://localhost:8000'}));
-app.use('/', express.static(__dirname + '/../client/public'));
-app.use('/bundle', express.static(__dirname + '/../client/public/bundle.js'));
+app.use(cors({origin: 'http://54.157.193.11:8000/'}));
+app.use('/', cors(), express.static(__dirname + '/../client/public'));
+app.use('/bundle', cors(), express.static(__dirname + '/../client/public/bundle.js'));
 
-app.get('/api/places', (req, res) => {
+app.get('/api/places', cors(), (req, res) => {
   db.query(`SELECT * FROM places LIMIT 12`, (err, result) => {
     if (err) {
       console.log(err);
