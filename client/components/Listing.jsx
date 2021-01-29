@@ -12,10 +12,17 @@ class Listing extends React.Component {
       fontWeight: 900
     }
     this.noRevStyle = {
-      margin: '2px'
+      margin: '2px',
+      fontWeight: 'lighter'
     }
     this.startColor = {
       color: '#FF385C'
+    }
+    this.reviewContStyle = {
+      paddingBottom: '5px'
+    }
+    this.descContainerStyle = {
+      paddingBottom: '5px'
     }
   }
 
@@ -25,7 +32,7 @@ class Listing extends React.Component {
         <div id='imgContainer'>
           <img src={this.props.listing.pic} style={this.imgStyle} />
         </div>
-        <div id='reviewContainer'>
+        <div id='reviewContainer' style={this.reviewContStyle}>
           {
             (this.props.listing.revnum === 0) ?
               <p style={this.noRevStyle}>No reviews yet</p> :
@@ -35,7 +42,7 @@ class Listing extends React.Component {
         <div id='roomContainer'>
           <p style={this.noRevStyle}>{this.props.listing.roomtype} - {this.props.listing.numbeds} beds</p>
         </div>
-        <div id='descContainer'>
+        <div id='descContainer' style={this.descContainerStyle}>
           <p style={this.noRevStyle}>{this.props.listing.description}</p>
         </div>
         <div id='priceContainer'>

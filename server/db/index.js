@@ -11,7 +11,8 @@ const pass = process.env.DB_PASS;
 const connection = mysql.createConnection({
   host: 'localhost',
   user: user,
-  password: pass
+  password: pass,
+  multipleStatements: true
 });
 
 const db = Promise.promisifyAll(connection, { multiArgs: true });

@@ -21,6 +21,16 @@ app.get('/api/places', cors(), (req, res) => {
   })
 });
 
+app.get('/api/things', cors(), (req, res) => {
+  db.query(`SELECT * FROM things LIMIT 20`, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+});
+
 const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, () => {
