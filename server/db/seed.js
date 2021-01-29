@@ -33,3 +33,25 @@ for (let i = 0; i < 150; i++) {
   );
 
 }
+
+for (let i = 0; i < 150; i++) {
+
+  const desc = faker.lorem.sentence();
+  const pic = faker.image.city(300, 300, true);
+  const revNum = faker.random.number(5);
+  const revAmount = faker.random.number(180);
+  const price = faker.finance.amount(50, 400);
+
+  const input = [desc, pic, revNum, revAmount, price];
+
+  db.query(
+    'INSERT INTO things(description, pic, revnum, revamount, price) values(?, ?, ?, ?, ?)', input, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+      }
+    }
+  );
+
+}
