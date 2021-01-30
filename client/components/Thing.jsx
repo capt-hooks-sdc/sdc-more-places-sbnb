@@ -15,6 +15,10 @@ class Thing extends React.Component {
       margin: '2px',
       fontWeight: 'lighter'
     }
+    this.descStyle = {
+      margin: '2px',
+      fontWeight: 400
+    }
     this.startColor = {
       color: '#FF385C'
     }
@@ -40,7 +44,7 @@ class Thing extends React.Component {
           }
         </div>
         <div id='descContainerThing' style={this.descContainerStyle}>
-          <p style={this.noRevStyle}>{this.props.thing.description}</p>
+          <p style={this.descStyle}>{this.props.thing.description}</p>
         </div>
         <div id='priceContainerThing'>
           <p style={this.noRevStyle}><span style={this.priceStyle}>From ${this.props.thing.price}</span> / person</p>
