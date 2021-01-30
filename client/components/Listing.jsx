@@ -15,6 +15,10 @@ class Listing extends React.Component {
       margin: '2px',
       fontWeight: 'lighter'
     }
+    this.descStyle = {
+      margin: '2px',
+      fontWeight: 400
+    }
     this.startColor = {
       color: '#FF385C'
     }
@@ -43,7 +47,7 @@ class Listing extends React.Component {
           <p style={this.noRevStyle}>{this.props.listing.roomtype} - {this.props.listing.numbeds} beds</p>
         </div>
         <div id='descContainer' style={this.descContainerStyle}>
-          <p style={this.noRevStyle}>{this.props.listing.description}</p>
+          <p style={this.descStyle}>{this.props.listing.description}</p>
         </div>
         <div id='priceContainer'>
           <p style={this.noRevStyle}><span style={this.priceStyle}>${this.props.listing.price}</span> / night</p>
