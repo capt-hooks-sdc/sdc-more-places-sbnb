@@ -44,7 +44,7 @@ class Listing extends React.Component {
           }
         </div>
         <div id='roomContainer'>
-          <p style={this.noRevStyle}>{this.props.listing.roomtype} - {this.props.listing.numbeds} beds</p>
+          <p style={this.descStyle}>{this.props.listing.roomtype} - {this.props.listing.numbeds} beds</p>
         </div>
         <div id='descContainer' style={this.descContainerStyle}>
           <p style={this.descStyle}>{this.props.listing.description}</p>
