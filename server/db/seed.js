@@ -7,6 +7,7 @@ db.query(`USE placesToStay;`);
 
 // Real data
 const listType = ['Barn', 'Entire guesthouse', 'Entire apartment', 'Entire condominium'];
+//const descArr = [];
 
 
 //  add data
