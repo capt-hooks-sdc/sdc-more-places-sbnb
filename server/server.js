@@ -31,6 +31,26 @@ app.get('/api/things', cors(), (req, res) => {
   })
 });
 
+app.get('/api/demop', cors(), (req, res) => {
+  db.query(`SELECT * FROM dplaces LIMIT 12`, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+});
+
+app.get('/api/demot', cors(), (req, res) => {
+  db.query(`SELECT * FROM dthings LIMIT 20`, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+});
+
 const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, () => {
