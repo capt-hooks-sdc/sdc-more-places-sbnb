@@ -4,15 +4,15 @@ const db = require('./index');
 
 db.query(`USE placesToStay;`);
 
+db.query(`DROP TABLE places;`);
+db.query(`DROP TABLE things;`);
+
 
 // Real data
-const listType = ['Barn', 'Entire guesthouse', 'Entire apartment', 'Entire condominium'];
-//const descArr = [];
-
+const listType = ['Barn', 'Entire guesthouse', 'Entire apartment', 'Entire condominium', 'Hotel room', 'Private room', 'Entire house', ];
 
 //  add data
 for (let i = 0; i < 150; i++) {
-
   const desc = faker.lorem.sentence();
   const pic = faker.image.city(300, 300, true);
   const revNum = faker.random.number(5);
@@ -32,11 +32,9 @@ for (let i = 0; i < 150; i++) {
       }
     }
   );
-
 }
 
 for (let i = 0; i < 150; i++) {
-
   const desc = faker.lorem.sentence();
   const pic = faker.image.city(300, 300, true);
   const revNum = faker.random.number(5);
@@ -54,5 +52,4 @@ for (let i = 0; i < 150; i++) {
       }
     }
   );
-
 }
