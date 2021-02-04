@@ -1,26 +1,11 @@
-const mysql = require('mysql');
-const createTables = require('./config');
-const Promise = require('bluebird');
 require('dotenv').config();
+const PATH = process.env.DB_PATH || 'mongodb://localhost/test'
+const mongoose = require('mongoose');
+mongoose.connect(PATH, {useNewUrlParser: true, useUnifiedTopology: true});
 
-const database = 'placesToStay';
-
-const user = process.env.DB_USER;
-const pass = process.env.DB_PASS;
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: user,
-  password: pass,
-  multipleStatements: true
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log(`we're connected to MongoDB!`);
 });
-
-const db = Promise.promisifyAll(connection, { multiArgs: true });
-
-db.connectAsync()
-  .then(() => console.log(`Connected to ${database} database as ID ${db.threadId}`))
-  .then(() => db.queryAsync(`CREATE DATABASE IF NOT EXISTS ${database}`))
-  .then(() => db.queryAsync(`USE ${database}`))
-  .then(() => createTables(db));
-
-module.exports = db;
