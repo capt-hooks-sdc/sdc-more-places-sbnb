@@ -14,23 +14,23 @@ app.use('/', express.static(__dirname + '/../client/public'));
 app.use('/bundle', express.static(__dirname + '/../client/public/bundle.js'));
 
 app.get('/api/places', (req, res) => {
-    db.query(`SELECT * FROM places LIMIT 12`, (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(result);
-        }
-    })
+  db.query('SELECT * FROM places LIMIT 12', (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.get('/api/things', (req, res) => {
-    db.query(`SELECT * FROM things LIMIT 20`, (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(result);
-        }
-    })
+  db.query('SELECT * FROM things LIMIT 20', (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.listen(PORT, () => {
