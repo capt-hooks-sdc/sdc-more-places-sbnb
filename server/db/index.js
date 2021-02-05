@@ -1,26 +1,22 @@
-const mysql = require('mysql');
-const createTables = require('./config');
-const Promise = require('bluebird');
 require('dotenv').config();
+const { Pool } = require('pg');
+const HOST = process.env.DB_HOST || 'localhost';
+const DB_NAME = process.env.DB_NAME || 'postgres';
+const USER = process.env.DB_USER || 'student';
+const PASS = process.env.DB_PASS || 'student';
 
-const database = 'placesToStay';
-
-const user = process.env.DB_USER;
-const pass = process.env.DB_PASS;
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: user,
-  password: pass,
-  multipleStatements: true
+const pool = new Pool({
+  user: USER,
+  password: PASS,
+  host: HOST,
+  database: DB_NAME,
+  max: 20,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
 });
 
-const db = Promise.promisifyAll(connection, { multiArgs: true });
+pool.connect();
 
-db.connectAsync()
-  .then(() => console.log(`Connected to ${database} database as ID ${db.threadId}`))
-  .then(() => db.queryAsync(`CREATE DATABASE IF NOT EXISTS ${database}`))
-  .then(() => db.queryAsync(`USE ${database}`))
-  .then(() => createTables(db));
-
-module.exports = db;
+module.exports = {
+  // query functions here
+};
