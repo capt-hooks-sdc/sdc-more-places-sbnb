@@ -15,9 +15,8 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000,
 });
 
-pool.connect((err, client, release)=> {
-  if (err) {
-    return console.error(`Error aquiring client: ${err.stack}`);
-  }
-  console.log('connected to Postgres');
-});
+pool.connect();
+
+module.exports = {
+  // query functions here
+};
