@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3003;
 
 app.use(compression());
-app.use(cors({origin: 'http://54.157.193.11:8000/'}));
+app.use(cors({origin: 'http://localhost:8000/'}));
 app.use('/', express.static(__dirname + '/../client/public'));
 app.use('/bundle', express.static(__dirname + '/../client/public/bundle.js'));
 

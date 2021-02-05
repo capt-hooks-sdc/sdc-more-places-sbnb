@@ -1,11 +1,23 @@
 require('dotenv').config();
-const PATH = process.env.DB_PATH || 'mongodb://localhost/test';
-const mongoose = require('mongoose');
-mongoose.connect(PATH, {useNewUrlParser: true, useUnifiedTopology: true});
+const { Pool } = require('pg');
+const HOST = process.env.DB_HOST || 'localhost';
+const DB_NAME = process.env.DB_NAME || 'postgres';
+const USER = process.env.DB_USER || 'student';
+const PASS = process.env.DB_PASS || 'student';
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-  console.log('we\'re connected to MongoDB!');
+const pool = new Pool({
+  user: USER,
+  password: PASS,
+  host: HOST,
+  database: DB_NAME,
+  max: 20,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
+});
+
+pool.connect((err, client, release)=> {
+  if (err) {
+    return console.error(`Error aquiring client: ${err.stack}`);
+  }
+  console.log('connected to Postgres');
 });
