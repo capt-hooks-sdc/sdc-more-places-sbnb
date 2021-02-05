@@ -11,6 +11,7 @@ CREATE TABLE places (
     descrip text,
     picURL INT,
     numRating INT,
+    Rating INT,
     roomType text,
     numBeds INT,
     price NUMERIC
