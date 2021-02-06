@@ -1,12 +1,15 @@
 -- Run psql -d [target_db_name] -U [user/owner_name] < [/path/to]schema.sql
 
-CREATE SCHEMA recommend;
-CREATE TABLE pics (
+-- DROP TABLE IF EXISTS pics CASCADE;
+-- DROP TABLE IF EXISTS places CASCADE;
+-- DROP TABLE IF EXISTS toDos CASCADE;
+
+CREATE TABLE IF NOT EXISTS pics (
     id INT PRIMARY KEY,
     picURL text
 );
 
-CREATE TABLE places (
+CREATE TABLE IF NOT EXISTS places (
     id INT PRIMARY KEY,
     descrip text,
     picURL INT,
@@ -17,7 +20,7 @@ CREATE TABLE places (
     price NUMERIC
 );
 
-CREATE TABLE toDos (
+CREATE TABLE IF NOT EXISTS toDos (
     id INT PRIMARY KEY,
     descript text,
     picURL INT,
