@@ -5,7 +5,7 @@ const faker = require('faker');
 const writePlaces = fs.createWriteStream('./db/CSV_Data/places.csv');
 writePlaces.write('id,descript,picurl,numrating,rating,roomtype,numbeds,price\n', 'utf-8');
 
-let writeFiveMillionPlaces = (writer, encoding, cb) => {
+let writeTenMillionPlaces = (writer, encoding, cb) => {
   let i = 10000000;
   let id = 0;
   // eslint-disable-next-line func-style
@@ -35,6 +35,6 @@ let writeFiveMillionPlaces = (writer, encoding, cb) => {
   write();
 };
 
-writeFiveMillionPlaces(writePlaces, 'utf-8', () => {
+writeTenMillionPlaces(writePlaces, 'utf-8', () => {
   writePlaces.end();
 });
