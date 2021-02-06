@@ -1,7 +1,7 @@
 const fs = require('fs');
 const faker = require('faker');
 
-const writePics = fs.createWriteStream('./CSV_Data/pics.csv');
+const writePics = fs.createWriteStream('./db/CSV_Data/pics.csv');
 writePics.write('id,picurl\n', 'utf-8');
 
 let writeThousandsPic = (writer, encoding, cb) => {

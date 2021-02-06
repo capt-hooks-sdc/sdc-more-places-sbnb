@@ -1,8 +1,8 @@
 -- Run psql -d [target_db_name] -U [user/owner_name] < [/path/to]schema.sql
 
--- DROP TABLE IF EXISTS pics CASCADE;
--- DROP TABLE IF EXISTS places CASCADE;
--- DROP TABLE IF EXISTS toDos CASCADE;
+DROP TABLE IF EXISTS pics CASCADE;
+DROP TABLE IF EXISTS places CASCADE;
+DROP TABLE IF EXISTS toDos CASCADE;
 
 CREATE TABLE IF NOT EXISTS pics (
     id INT PRIMARY KEY,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS pics (
 
 CREATE TABLE IF NOT EXISTS places (
     id INT PRIMARY KEY,
-    descrip text,
+    descript text,
     picURL INT,
     numRating INT,
     Rating INT,
@@ -29,5 +29,8 @@ CREATE TABLE IF NOT EXISTS toDos (
     price NUMERIC
 );
 
-ALTER TABLE places ADD FOREIGN KEY (picURL) REFERENCES pics;
-ALTER TABLE toDos ADD FOREIGN KEY (picURL) REFERENCES pics;
+ALTER TABLE places ADD CONSTRAINT pic_fk FOREIGN KEY (picURL) REFERENCES pics(id) ON DELETE CASCADE;
+ALTER TABLE toDos ADD CONSTRAINT pic_fk FOREIGN KEY (picURL) REFERENCES pics(id) ON DELETE CASCADE;
+
+CREATE INDEX ON places(picURL);
+CREATE INDEX ON toDos(picURL);
