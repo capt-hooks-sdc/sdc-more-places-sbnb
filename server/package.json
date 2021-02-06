@@ -6,7 +6,7 @@
   "scripts": {
     "dev-start": "nodemon server.js",
     "start": "node server.js",
-    "seed": "node seed.js"
+    "seed": "node ./db/seed.js"
   },
   "author": "Eugene",
   "license": "ISC",

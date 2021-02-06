@@ -2,11 +2,11 @@
 const fs = require('fs');
 const faker = require('faker');
 
-const writePlaces = fs.createWriteStream('./CSV_Data/places.csv');
-writePlaces.write('id,descrip,picurl,numrating,rating,roomtype,numbeds,price\n', 'utf-8');
+const writePlaces = fs.createWriteStream('./db/CSV_Data/places.csv');
+writePlaces.write('id,descript,picurl,numrating,rating,roomtype,numbeds,price\n', 'utf-8');
 
-let writeFiveMillionPlaces = (writer, encoding, cb) => {
-  let i = 5000000;
+let writeTenMillionPlaces = (writer, encoding, cb) => {
+  let i = 10000000;
   let id = 0;
   // eslint-disable-next-line func-style
   function write() {
@@ -15,9 +15,9 @@ let writeFiveMillionPlaces = (writer, encoding, cb) => {
       i -= 1;
       id += 1;
       const desc = faker.lorem.sentence();
-      const pic = Math.random() * 1000;
-      const numRating = faker.random.number(5);
-      const rating = faker.random.number(180);
+      const pic = Math.floor(Math.random() * 1000) + 1;
+      const numRating = faker.random.number(180);
+      const rating = faker.random.number(5);
       const roomType = faker.lorem.sentence(3);
       const numBeds = faker.random.number(5);
       const price = faker.finance.amount(50, 400, 2);
@@ -35,6 +35,6 @@ let writeFiveMillionPlaces = (writer, encoding, cb) => {
   write();
 };
 
-writeFiveMillionPlaces(writePlaces, 'utf-8', () => {
+writeTenMillionPlaces(writePlaces, 'utf-8', () => {
   writePlaces.end();
 });
