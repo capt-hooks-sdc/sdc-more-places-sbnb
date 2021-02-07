@@ -55,8 +55,34 @@ const getTodos = (cb) => {
   });
 };
 
+// The following 2 methods are used with the testing routes to the query time for fetching data at the end of the database (10M spots)
+
+const getLastPlaces = (cb) => {
+  let queryStr = 'select p.id, p.descript, pics.picurl, p.numrating, p.rating, p.roomtype, p.numbeds, p.price from places p inner join pics on p.picurl = pics.id where p.id>9999988 AND p.id<=10000000';
+  pool.query(queryStr, (err, result) => {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.rows);
+    }
+  });
+};
+
+const getLastTodos = (cb) => {
+  let queryStr = 'select t.id, t.descript, pics.picurl, t.numrating, t.rating, t.price from todos t inner join pics on t.picurl = pics.id where t.id>9999980 AND t.id<=10000000';
+  pool.query(queryStr, (err, result) => {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, result.rows);
+    }
+  });
+};
+
 module.exports = {
   // query functions here
   getPlaces,
-  getTodos
+  getTodos,
+  getLastPlaces,
+  getLastTodos
 };
