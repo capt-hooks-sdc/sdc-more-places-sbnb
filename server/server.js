@@ -14,9 +14,10 @@ app.use('/', express.static(__dirname + '/../client/public'));
 app.use('/bundle', express.static(__dirname + '/../client/public/bundle.js'));
 
 app.get('/api/places', (req, res) => {
-  db.query('SELECT * FROM places LIMIT 12', (err, result) => {
+  db.getPlaces((err, result) => {
     if (err) {
       console.log(err);
+      res.status(404).send(`Error getting information from database: ${err}`);
     } else {
       res.send(result);
     }
@@ -24,9 +25,10 @@ app.get('/api/places', (req, res) => {
 });
 
 app.get('/api/things', (req, res) => {
-  db.query('SELECT * FROM things LIMIT 20', (err, result) => {
+  db.getTodos((err, result) => {
     if (err) {
       console.log(err);
+      res.status(404).send(`Error getting information from database: ${error}`);
     } else {
       res.send(result);
     }
