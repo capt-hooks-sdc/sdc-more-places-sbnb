@@ -34,7 +34,10 @@ pool.query(picQuery)
         const todosQuery = 'COPY todos (id, descript, picurl, numrating, rating, price) FROM \'/Users/eugene/work/hrr50/SDC/sdc-more-places-sbnb/server/db/CSV_Data/todos.csv\' CSV DELIMITER \',\' HEADER';
 
         pool.query(todosQuery)
-          .then(result => console.log(`todos seeded: ${result.rowCount}`))
+          .then((result) => {
+            console.log(`todos seeded: ${result.rowCount}`);
+            pool.end(()=> console.log('pool has ended'));
+          })
           .catch(err => console.error(`Error occur seeding todos: ${err}`));
       })
       .catch(err => console.error(`Error occur seeding places: ${err}`));

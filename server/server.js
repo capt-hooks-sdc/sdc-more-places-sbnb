@@ -1,4 +1,5 @@
 require('dotenv').config;
+require('newrelic');
 const compression = require('compression');
 const express = require('express');
 const cors = require('cors');
@@ -14,9 +15,10 @@ app.use('/', express.static(__dirname + '/../client/public'));
 app.use('/bundle', express.static(__dirname + '/../client/public/bundle.js'));
 
 app.get('/api/places', (req, res) => {
-  db.query('SELECT * FROM places LIMIT 12', (err, result) => {
+  db.getPlaces((err, result) => {
     if (err) {
-      console.log(err);
+      console.error(err);
+      res.status(404).send(`Error getting information from database: ${err}`);
     } else {
       res.send(result);
     }
@@ -24,9 +26,35 @@ app.get('/api/places', (req, res) => {
 });
 
 app.get('/api/things', (req, res) => {
-  db.query('SELECT * FROM things LIMIT 20', (err, result) => {
+  db.getTodos((err, result) => {
     if (err) {
-      console.log(err);
+      console.error(err);
+      res.status(404).send(`Error getting information from database: ${error}`);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+// The following 2 routes is for testing purpose
+// Use the following 2 routes to test the query time for fetching data at the end of the database (10M spot)
+
+app.get('/api/places/end', (req, res)=> {
+  db.getLastPlaces((err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(404).send(`Error getting information from database: ${err}`);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get('/api/things/end', (req, res) => {
+  db.getLastTodos((err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(404).send(`Error getting information from database: ${error}`);
     } else {
       res.send(result);
     }

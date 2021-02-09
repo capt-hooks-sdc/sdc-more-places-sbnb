@@ -7,3 +7,7 @@ server/.env
 *.DS_Store
 
 *.csv
+
+newrelic*
+
+script.js
